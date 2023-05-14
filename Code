@@ -24,6 +24,36 @@ public class hello extends Application {
     
     @Override
     public void start(Stage stage) {
+    // Create GUI controls
+Label inputLabel = new Label("Input Text:");
+inputField = new TextArea();
+
+Label keyLabel = new Label("DES Key:");
+keyField = new TextField();
+keyField.setPrefWidth(300);
+
+Button encryptButton = new Button("Encrypt");
+Button decryptButton = new Button("Decrypt");
+
+outputLabel = new TextArea();
+outputLabel.setPrefWidth(300);
+
+// Place the controls in a VBox
+VBox root = new VBox(10);
+root.setAlignment(Pos.CENTER);
+root.setPadding(new Insets(20));
+root.getChildren().addAll(inputLabel, inputField, keyLabel, keyField, encryptButton, decryptButton, outputLabel);
+
+// Create a scene and set the VBox in it
+Scene scene = new Scene(root, 400, 400);
+
+// Set the button actions
+encryptButton.setOnAction(event -> encrypt());
+decryptButton.setOnAction(event -> decrypt());
+
+// Show the scene
+stage.setScene(scene);
+stage.show();
     
     }
     
