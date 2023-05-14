@@ -20,8 +20,7 @@ public class DESAlgorithm extends Application {
     private TextArea inputField;
     private TextField keyField;
     private TextArea outputLabel;
-    
-    
+ 
     @Override
     public void start(Stage stage) {
     
@@ -77,6 +76,8 @@ public class DESAlgorithm extends Application {
             outputLabel.setText("Encryption Error");
         }
     }
+    
+    
      private void decrypt() {
      try {
             String input = inputField.getText();
