@@ -7,3 +7,5 @@ Era Maliqi
 Erand Kurtaliqi
 Eriona Mustafa
 Endrit Abazi
+
+Gjuha programuese: Java
