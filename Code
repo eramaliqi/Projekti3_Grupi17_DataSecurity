@@ -59,7 +59,10 @@ public class hello extends Application {
 
             // Display the decrypted data in the output label
             outputLabel.setText("Decrypted Text: " + decrypted);
-        } 
+        }catch (Exception e) {
+            e.printStackTrace();
+            outputLabel.setText("Decryption Error");
+        }
      }
      
       public static void main(String[] args) {
