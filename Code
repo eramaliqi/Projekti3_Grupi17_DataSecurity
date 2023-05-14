@@ -1,1 +1,39 @@
-kodi
+package ds;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+
+public class hello extends Application {
+
+    private TextArea inputField;
+    private TextField keyField;
+    private TextArea outputLabel;
+    
+    
+    @Override
+    public void start(Stage stage) {
+    
+    }
+    
+     private void encrypt() {
+     }
+     
+     private void decrypt() {
+     }
+     
+      public static void main(String[] args) {
+        launch(args);
+    }
+}
