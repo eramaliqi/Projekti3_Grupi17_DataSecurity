@@ -17,6 +17,7 @@ Ky projekt implementon një aplikacion JavaFX për enkriptimin dhe dekriptimin e
 ### Kufizimet
 
 -Çelësi DES duhet të jetë një string i përbërë prej 8 karakteresh.
+
 -Vetëm karakteret ASCII (0-127) mund të enkriptohen ose dekriptohen. Karakteret që kanë vlera mbi 127 nuk janë të përkrahura dhe do të injorohen gjatë procesit të enkriptimit ose dekriptimit.
 
 
