@@ -31,6 +31,18 @@ public class hello extends Application {
      }
      
      private void decrypt() {
+     try {
+            // Get the input data and key from the user
+            String input = inputField.getText();
+            String key = keyField.getText();
+
+            // Create a SecretKeySpec object with the given key
+            byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
+            SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "DES");
+
+            // Create a DES cipher and set the key in it
+            Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");
+            des.init(Cipher.DECRYPT_MODE, keySpec);
      }
      
       public static void main(String[] args) {
