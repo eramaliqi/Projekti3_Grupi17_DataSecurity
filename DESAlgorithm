@@ -37,14 +37,12 @@ public class DESAlgorithm extends Application {
 
     outputLabel = new TextArea();
     outputLabel.setPrefWidth(300);
-
-// Place the controls in a VBox
+    
     VBox root = new VBox(10);
     root.setAlignment(Pos.CENTER);
     root.setPadding(new Insets(20));
     root.getChildren().addAll(inputLabel, inputField, keyLabel, keyField, encryptButton, decryptButton, outputLabel);
 
-// Create a scene and set the VBox in it
     Scene scene = new Scene(root, 400, 400);
 
     encryptButton.setOnAction(event -> encrypt());
@@ -56,29 +54,23 @@ public class DESAlgorithm extends Application {
     
     private void encrypt() {
         try {
-            // Get the input data and key from the user
             String input = inputField.getText();
             String key = keyField.getText();
 
-            // Create a SecretKeySpec object with the given key
             byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
             SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "DES");
 
-            // Create a DES cipher and set the key in it
             Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");
             des.init(Cipher.ENCRYPT_MODE, keySpec);
 
-            // Encrypt the input data
             byte[] inputBytes = input.getBytes(StandardCharsets.UTF_8);
             byte[] encryptedBytes = des.doFinal(inputBytes);
 
-            // Convert the encrypted bytes to a hexadecimal string
             StringBuilder encryptedHex = new StringBuilder();
             for (byte b : encryptedBytes) {
                 encryptedHex.append(String.format("%02X", b));
             }
-
-            // Display the encrypted data in the output label
+            
             outputLabel.setText("Encrypted Text: " + encryptedHex.toString());
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,32 +79,25 @@ public class DESAlgorithm extends Application {
     }
      private void decrypt() {
      try {
-            // Get the input data and key from the user
             String input = inputField.getText();
             String key = keyField.getText();
 
-            // Create a SecretKeySpec object with the given key
             byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
             SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "DES");
 
-            // Create a DES cipher and set the key in it
             Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");
             des.init(Cipher.DECRYPT_MODE, keySpec);
             
-             // Convert the input hexadecimal string to bytes
             byte[] inputBytes = new byte[input.length() / 2];
             for (int i = 0; i < input.length(); i += 2) {
                 String hexByte = input.substring(i, i + 2);
                 inputBytes[i / 2] = (byte) Integer.parseInt(hexByte, 16);
             }
 
-            // Decrypt the input data
             byte[] decryptedBytes = des.doFinal(inputBytes);
 
-            // Convert the decrypted bytes to a string
             String decrypted = new String(decryptedBytes, StandardCharsets.UTF_8);
 
-            // Display the decrypted data in the output label
             outputLabel.setText("Decrypted Text: " + decrypted);
         }catch (Exception e) {
             e.printStackTrace();
