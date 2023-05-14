@@ -43,6 +43,23 @@ public class hello extends Application {
             // Create a DES cipher and set the key in it
             Cipher des = Cipher.getInstance("DES/ECB/PKCS5Padding");
             des.init(Cipher.DECRYPT_MODE, keySpec);
+            
+             // Convert the input hexadecimal string to bytes
+            byte[] inputBytes = new byte[input.length() / 2];
+            for (int i = 0; i < input.length(); i += 2) {
+                String hexByte = input.substring(i, i + 2);
+                inputBytes[i / 2] = (byte) Integer.parseInt(hexByte, 16);
+            }
+
+            // Decrypt the input data
+            byte[] decryptedBytes = des.doFinal(inputBytes);
+
+            // Convert the decrypted bytes to a string
+            String decrypted = new String(decryptedBytes, StandardCharsets.UTF_8);
+
+            // Display the decrypted data in the output label
+            outputLabel.setText("Decrypted Text: " + decrypted);
+        } 
      }
      
       public static void main(String[] args) {
